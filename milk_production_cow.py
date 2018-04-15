@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-
+from sklearn.preprocessing import MinMaxScaler
 import matplotlib.pyplot as plt
 %matplotlib inline
 
@@ -9,15 +9,11 @@ milk = pd.read_csv('monthly-milk-production.csv',index_col='Month')
 
 milk.head()
 milk.index = pd.to_datetime(milk.index)
-milk.plot()
-
-milk.info()
 
 train_set = milk.head(156)
 
 test_set = milk.tail(12)
 
-from sklearn.preprocessing import MinMaxScaler
 
 scaler = MinMaxScaler()
 
@@ -50,6 +46,8 @@ num_outputs = 1
 learning_rate = 0.03 
 # how many iterations to go through (training steps), you can play with this
 num_train_iterations = 4000
+# This number is chosen arbitrarily
+# Adding more iterations will increase accuracy however 
 # Size of the batch of data
 batch_size = 1
 
